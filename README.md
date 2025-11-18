@@ -1,5 +1,18 @@
 # project
 ## Описание структуры проекта:
+
+### начальная архитектура
+```text
+src
+    └─java
+       └─ app
+       └─ model
+       └─ sort
+       └─ validation
+       └─ io
+       └─ test
+```
+
 ### пакеты:
 `model` – `Student`, `StudentBuilder`.
 
@@ -21,3 +34,5 @@ class Student {
     String recordBookNumber;
 }
 ```
+
+
