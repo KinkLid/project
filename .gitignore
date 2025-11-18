@@ -9,6 +9,12 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+.metals/
+.bsp/
+.idea/
+.vscode/
+project/
+target/
 
 # Package Files #
 *.jar
