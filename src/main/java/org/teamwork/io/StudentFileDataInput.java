@@ -1,6 +1,6 @@
-package main.io;
+package org.teamwork.io;
 
-import main.Student;
+import org.teamwork.model.Student;
 
 public class StudentFileDataInput extends AbstractFileDataInput<Student> {
     // Парсинг строки, содержащей данные о студентах

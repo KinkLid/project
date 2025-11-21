@@ -1,15 +1,16 @@
 package org.teamwork;
 
+import java.io.IOException;
+import java.util.Collections;
+
 import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import com.googlecode.lanterna.gui2.Window;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
-import org.teamwork.app.MainWindow;
 
-import java.io.IOException;
-import java.util.Collections;
+import org.teamwork.app.MainWindow;
 
 public class Main {
     public static void main() {

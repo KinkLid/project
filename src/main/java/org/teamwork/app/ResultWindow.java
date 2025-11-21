@@ -1,11 +1,11 @@
 package org.teamwork.app;
 
-import com.googlecode.lanterna.gui2.*;
-import com.googlecode.lanterna.gui2.table.Table;
-//import org.teamwork.model.Student; // Потом нужно проверить
-
 import java.util.List;
 
+import com.googlecode.lanterna.gui2.*;
+import com.googlecode.lanterna.gui2.table.Table;
+
+import org.teamwork.model.Student;
 
 public class ResultWindow extends BasicWindow {
     public ResultWindow(List<Student> students) {
@@ -17,7 +17,7 @@ public class ResultWindow extends BasicWindow {
 
         for (Student student : students) {
             table.getTableModel().addRow(
-                    student.getGroupNumber(),
+                    String.format("%d", student.getGroupNumber()),
                     String.format("%.2f", student.getAverageGrade()),
                     student.getRecordBookNumber()
             );

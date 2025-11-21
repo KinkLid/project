@@ -1,12 +1,11 @@
 package org.teamwork.app;
 
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.gui2.*;
-
-//import org.teamwork.model.Student; // Потом нужно проверить
-
 import java.util.List;
 
+import com.googlecode.lanterna.gui2.*;
+import com.googlecode.lanterna.TerminalSize;
+
+import org.teamwork.model.Student;
 
 public class MainWindow extends BasicWindow {
 

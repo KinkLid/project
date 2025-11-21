@@ -1,6 +1,6 @@
-package main.io;
+package org.teamwork.io;
 
-import main.Student;
+import org.teamwork.model.Student;
 
 public class StudentManualDataInput extends AbstractManualDataInput <Student> {
 

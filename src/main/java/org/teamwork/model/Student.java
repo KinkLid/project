@@ -1,4 +1,4 @@
-package main.model;
+package org.teamwork.model;
 
 public class Student {
     int groupNumber;

@@ -1,9 +1,9 @@
-package main.io;
-
-import main.Student;
+package org.teamwork.io;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import org.teamwork.model.Student;
 
 // Класс для обработки ввода данных о студентах
 public class StudentInputHandler extends AbstractInputHandler<Student> {

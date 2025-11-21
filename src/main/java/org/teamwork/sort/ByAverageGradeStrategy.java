@@ -1,7 +1,6 @@
-package main.sort;
+package org.teamwork.sort;
 
-import main.model.Student;
-
+import org.teamwork.model.Student;
 
 public class ByAverageGradeStrategy implements StudentSortStrategy{
     private  Student[] mergeSort(Student[] main){
