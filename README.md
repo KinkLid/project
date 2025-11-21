@@ -1,38 +1,36 @@
 # project
+
 ## Описание структуры проекта:
 
-### начальная архитектура
-```text
+### Начальная архитектура:
+```
 src
-    └─java
-       └─ app
-       └─ model
-       └─ sort
-       └─ validation
-       └─ io
-       └─ test
+└── main
+    └── java
+        └── org
+            └── teamwork
+                ├── app
+                ├── io
+                ├── model
+                ├── sort
+                ├── test
+                ├── validation
+                └── Main.java
 ```
 
-### пакеты:
-`model` – `Student`, `StudentBuilder`.
+### Пакеты:
+- `model` — `Student`, `StudentBuilder`.
+- `sort` — интерфейс стратегии и реализации сортировок.
+- `validation` — проверка введённых данных.
+- `io` — работа с файлами, чтение/запись.
+- `app` — `Main`, циклы, меню.
+- `test` — простые тестовые классы.
 
-`sort` – интерфейс стратегии и реализации сортировок.
-
-`validation` – проверка введённых данных.
-
-`io` – работа с файлами, чтение/запись.
-
-`app` – `Main`, циклы, меню.
-
-`test` – простые тестовые классы.
-
-### выбранный класс:
-```text
+### Выбранный класс:
+```java
 class Student {
     int groupNumber;
     double averageGrade;
     String recordBookNumber;
 }
 ```
-
-
