@@ -13,7 +13,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import org.teamwork.app.MainWindow;
 
 public class Main {
-    public static void main() {
+    static void main() {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         Terminal terminal = null;
         Screen screen = null;
