@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+	<configuration default="false" name="Main.java" type="Application" factoryName="Application" singleton="false">
+		<option name="ALTERNATIVE_JRE_PATH" value="temurin-25" />
+		<option name="MAIN_CLASS_NAME" value="org.teamwork.Main" />
+		<module name="project.main" />
+		<method v="2">
+			<option name="Make" enabled="true" />
+		</method>
+	</configuration>
+</component>
