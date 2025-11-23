@@ -39,4 +39,12 @@ public class Student {
 	public String getRecordBookNumber() {
 		return recordBookNumber;
 	}
+
+	/**
+	 * Создаёт новый Builder для построения объекта Student
+	 * @return новый экземпляр StudentBuilder
+	 */
+	public static StudentBuilder Builder() {
+		return new StudentBuilder();
+	}
 }
