@@ -1,7 +1,7 @@
-package main.sort;
+package org.teamwork.sort;
 
-import main.model.Student;
+import org.teamwork.model.Student;
 
 public interface StudentSortStrategy {
-    public Student[] sort(Student[] students);
+	Student[] sort(Student[] students);
 }

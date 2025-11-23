@@ -1,25 +1,22 @@
-package main.sort;
+package org.teamwork.sort;
 
-import main.model.Student;
+import org.teamwork.model.Student;
 
 public class StudentSort {
-    private StudentSortStrategy studentSortStrategy;
-    private Student[] students;
+	private StudentSortStrategy studentSortStrategy;
+	private Student[] students;
 
-    public StudentSort(Student[] students, StudentSortStrategy studentSortStrategy) {
-        this.studentSortStrategy = studentSortStrategy;
-        this.students = studentSortStrategy.sort(students);
-    }
-    public void setStrategy(StudentSortStrategy strategy){
-        this.studentSortStrategy = strategy;
-        this.students = studentSortStrategy.sort(students);
-    }
-    public Student[] getStudents() {
-        return students;
-    }
+	public StudentSort(Student[] students, StudentSortStrategy studentSortStrategy) {
+		this.studentSortStrategy = studentSortStrategy;
+		this.students = studentSortStrategy.sort(students);
+	}
 
+	public void setStrategy(StudentSortStrategy strategy) {
+		this.studentSortStrategy = strategy;
+		this.students = studentSortStrategy.sort(students);
+	}
 
-
-
-
+	public Student[] getStudents() {
+		return students;
+	}
 }
