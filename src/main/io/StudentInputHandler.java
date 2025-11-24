@@ -25,4 +25,18 @@ public class StudentInputHandler extends AbstractInputHandler<Student> {
         AbstractFileDataInput<Student> studentInput = new StudentFileDataInput();
         return studentInput.readFromFile(filePath);
     }
+
+    // Публичные методы для использования в TUI
+    public ArrayList<Student> getManualInput(int length) {
+        return manualInput(length);
+    }
+
+    public ArrayList<Student> getRandomInput(int length) {
+        return randomInput(length);
+    }
+
+    public ArrayList<Student> getFileInput(String filePath) throws IOException {
+        return fileInput(filePath);
+    }
+}
 }
