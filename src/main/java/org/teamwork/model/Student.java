@@ -1,9 +1,11 @@
 package org.teamwork.model;
 
+import java.util.Objects;
+
 public class Student {
-	int groupNumber;
-	double averageGrade;
-	String recordBookNumber;
+	private int groupNumber;
+    private double averageGrade;
+    private String recordBookNumber;
 
 	@Override
 	public boolean equals(Object obj) {
@@ -17,10 +19,15 @@ public class Student {
 
 		Student student = (Student) obj;
 
-		return (groupNumber == student.groupNumber || getGroupNumber() == student.getGroupNumber()) &&
-				(averageGrade == student.averageGrade || getAverageGrade() == student.averageGrade) &&
-				(recordBookNumber.equals(student.recordBookNumber));
+        return groupNumber == student.groupNumber &&
+                Double.compare(student.averageGrade, averageGrade) == 0 &&
+                Objects.equals(recordBookNumber, student.recordBookNumber);
 	}
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(groupNumber, averageGrade, recordBookNumber);
+    }
 
 	public Student(int groupNumber, double averageGrade, String recordBookNumber) {
 		this.groupNumber = groupNumber;

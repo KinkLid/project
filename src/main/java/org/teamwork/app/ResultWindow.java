@@ -12,7 +12,7 @@ public class ResultWindow extends BasicWindow {
 	public ResultWindow(List<Student> students) {
 		super("Результат сортировки");
 
-		Panel panel = new Panel(new GridLayout(3)); // Посмотри на колонки после реализации
+		Panel panel = new Panel(new GridLayout(1)); // Посмотри на колонки после реализации
 
 		Table<String> table = new Table<>("Номер группы", "Средний балл", "Номер зачётки");
 

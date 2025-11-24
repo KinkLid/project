@@ -12,6 +12,7 @@ src
 				├── app
 				├── io
 				├── model
+				├── multithreadsearch
 				├── sort
 				├── test
 				├── validation
@@ -22,6 +23,7 @@ src
 - `app` — циклы, меню.
 - `io` — работа с файлами, чтение/запись.
 - `model` — `Student`, `StudentBuilder`.
+- `multithreadsearch` — `MultiThreadSearch`, `StudentReader`
 - `sort` — интерфейс стратегии и реализации сортировок.
 - `test` — простые тестовые классы.
 - `validation` — проверка введённых данных.

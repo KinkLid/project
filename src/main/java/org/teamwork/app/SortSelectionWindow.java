@@ -18,29 +18,31 @@ public class SortSelectionWindow extends BasicWindow {
 	private final Consumer<List<Student>> onSortComplete;
 
 	public SortSelectionWindow(ArrayList<Student> students, Consumer<List<Student>> onSortComplete) {
-		super("Выбор способа сортировки");
+		super("Выбор действия");
 		this.students = students;
 		this.onSortComplete = onSortComplete;
 
 		Panel panel = new Panel(new LinearLayout(Direction.VERTICAL));
-		panel.addComponent(new Label("Выберите способ сортировки:"));
+		panel.addComponent(new Label("Выберите действие:"));
 		panel.addComponent(new EmptySpace(new TerminalSize(0, 1)));
 
 		ActionListBox actionListBox = new ActionListBox(new TerminalSize(60, 10));
 
-		actionListBox.addItem("1. По номеру группы", () -> performSort(new ByGroupNumberStrategy()));
-		actionListBox.addItem("2. По средней оценке", () -> performSort(new ByAverageGradeStrategy()));
-		actionListBox.addItem("3. По номеру зачетной книжки", () -> performSort(new ByRecordBookNumberStrategy()));
+		actionListBox.addItem("1. Обычный способ сортировки", this::commonSort);
+//		actionListBox.addItem("2. Дополнительный способ сортировки" () -> performSort(new ByAverageGradeStrategy()));
+		actionListBox.addItem("3. Поиск", this::multiThread);
 		actionListBox.addItem("Назад в главное меню", this::close);
 
 		panel.addComponent(actionListBox);
 		setComponent(panel);
 	}
 
-	private void performSort(StudentSortStrategy strategy) {
+	private void commonSort() {
 		try {
 			Student[] studentArray = students.toArray(new Student[0]);
-			StudentSort studentSort = new StudentSort(studentArray, strategy);
+            StudentSort studentSort = new StudentSort(studentArray, new ByGroupNumberStrategy());
+            studentSort.setStrategy(new ByAverageGradeStrategy());
+            studentSort.setStrategy(new ByRecordBookNumberStrategy());
 			Student[] sortedArray = studentSort.getStudents();
 
 			List<Student> sortedList = Arrays.asList(sortedArray);
@@ -51,4 +53,13 @@ public class SortSelectionWindow extends BasicWindow {
 					"Ошибка при сортировке: " + e.getMessage(), MessageDialogButton.OK);
 		}
 	}
+
+    private void multiThread() {
+        if (students == null || students.isEmpty()) {
+            MessageDialog.showMessageDialog(this.getTextGUI(), "Внимание",
+                    "Список студентов пуст.", MessageDialogButton.OK);
+            return;
+        }
+        getTextGUI().addWindowAndWait(new MultiThreadCounterWindow(this.students));
+    }
 }
