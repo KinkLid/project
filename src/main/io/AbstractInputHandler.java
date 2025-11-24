@@ -11,22 +11,43 @@ public abstract class AbstractInputHandler <T>{
 
     //Метод, обрабатывающий выбор пользователя для ввода данных (из файла, случайных данных или вручную)
     public void handleInput(Scanner scanner) {
-        System.out.println("Выберите способ ввода данных:");
-        System.out.println("1 - ввод из файла");
-        System.out.println("2 - ввод случайных данных");
-        System.out.println("3 - ввод данных вручную");
 
-        int choice = scanner.nextInt();
-        try {
-            switch (choice) {
-                case 1 -> HandleTextInputArray(scanner);
-                case 2 -> HandleRandomInputArray(scanner);
-                case 3 -> handleManualInputArray(scanner);
-                default -> System.out.println("Неверный выбор.");
+        boolean isInputIncorrect = false;
+        do { // заставляем пользователя сделать правильный выбор)))
+            System.out.println("Выберите способ ввода данных:");
+            System.out.println("1 - ввод из файла");
+            System.out.println("2 - ввод случайных данных");
+            System.out.println("3 - ввод данных вручную");
+            System.out.println("0 - Отмена. Выход из функции");
+
+            int choice = scanner.nextInt();
+            try {
+                switch (choice) {
+                    case 1 -> {
+                        isInputIncorrect = false;
+                        HandleTextInputArray(scanner);
+                    }
+                    case 2 -> {
+                        isInputIncorrect = false;
+                        HandleRandomInputArray(scanner);
+                    }
+                    case 3 -> {
+                        isInputIncorrect = false;
+                        handleManualInputArray(scanner);
+                    }
+                    case 0 -> {
+                        return;
+                    }
+                    default -> {
+                        System.out.println("Неверный выбор. Повторите попытку.");
+                        isInputIncorrect = true;
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+
+        } while (isInputIncorrect);
     }
 
     // Обработка ввода данных вручную, создание списка и его печать.

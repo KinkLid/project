@@ -1,23 +1,28 @@
 package main.io;
 
 import main.Student;
+import main.validation.StudentValidator;
 
 public class StudentManualDataInput extends AbstractManualDataInput <Student> {
 
     @Override
     protected Student createObject() {
-        System.out.println("Введите номер группы (int): ");
+        IO.println("Введите номер группы (int): ");
         int groupNum = scanner.nextInt();
         scanner.nextLine(); // Очистка буфера
+        StudentValidator.validateGroupNumber(groupNum);
 
-        System.out.println("Введите среднюю оценку (double): ");
+        IO.println("Введите среднюю оценку (double): ");
         double avgGrade = scanner.nextDouble();
+        scanner.nextLine(); // Очистка буфера
+        StudentValidator.validateAverageGrade(avgGrade);
 
-        System.out.println("Введите номер зачетной книжки (String): ");
+        IO.println("Введите номер зачетной книжки (String): ");
         String recordBookNum = scanner.nextLine();
         scanner.nextLine(); // Очистка буфера
+        StudentValidator.validateRecordBookNumber(recordBookNum);
 
-        return new Student().Builder()
+        return Student.Builder()
                 .setGroupNumber(groupNum)
                 .setAverageGrade(avgGrade)
                 .setRecordBookNumber(recordBookNum)
