@@ -1,4 +1,4 @@
-package main.model;
+package org.teamwork.model;
 
 public class Student {
     int groupNumber;
@@ -17,8 +17,8 @@ public class Student {
 
         Student student = (Student) obj;
 
-        return (groupNumber == student.groupNumber || getGroupNumber() == student.getGroupNumber()) &&
-                (averageGrade == student.averageGrade || getAverageGrade() == student.averageGrade) &&
+        return (groupNumber == student.groupNumber) &&
+                (averageGrade == student.averageGrade) &&
                 (recordBookNumber.equals(student.recordBookNumber));
     }
 

@@ -1,6 +1,6 @@
-package main.sort;
+package org.teamwork.sort;
 
-import main.model.Student;
+import org.teamwork.model.Student;
 
 public class StudentSort {
     private StudentSortStrategy studentSortStrategy;

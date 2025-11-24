@@ -1,7 +1,7 @@
-package main.test;
+package org.teamwork.test;
 
-import main.model.Student;
-import main.sort.*;
+import org.teamwork.model.Student;
+import org.teamwork.sort.*;
 
 import java.util.Arrays;
 
