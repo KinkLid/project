@@ -18,7 +18,7 @@ public class StudentTest {
         assertEquals("RB-123", student.getRecordBookNumber());
     }
 
-    @Test
+    @Test 
     public void testInvalidGroupNumber() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Student.Builder()
