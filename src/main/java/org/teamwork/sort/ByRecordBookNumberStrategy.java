@@ -1,5 +1,5 @@
-package main.sort;
-import main.model.Student   ;
+package org.teamwork.sort;
+import org.teamwork.model.Student   ;
 import java.util.Comparator;
 
 public class ByRecordBookNumberStrategy implements StudentSortStrategy  {

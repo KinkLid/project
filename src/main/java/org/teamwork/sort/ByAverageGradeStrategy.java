@@ -1,8 +1,9 @@
-package main.sort;
+package org.teamwork.sort;
 
-import main.model.Student;
+import org.teamwork.model.Student;
 
-public class ByGroupNumberStrategy implements StudentSortStrategy {
+
+public class ByAverageGradeStrategy implements StudentSortStrategy{
     private  Student[] mergeSort(Student[] main){
 
         if (main.length < 2) return main; //пока элемент не станет одиночным делим
@@ -20,11 +21,23 @@ public class ByGroupNumberStrategy implements StudentSortStrategy {
 
         int l = 0, r = 0, m = 0;
         while (l < left.length && r < right.length) { //будет выполняться пока один из массивов не дойдет до конца
-            if (left[l].getGroupNumber() <= right[r].getGroupNumber())
+            if(left[l].getGroupNumber() < right[r].getGroupNumber()){
+                main[m++] = left[l++];
+                continue;
+            }
+
+            if(left[l].getGroupNumber() > right[r].getGroupNumber()){
+                main[m++] = right[r++];
+                continue;
+            }
+
+
+            if (left[l].getAverageGrade() <= right[r].getAverageGrade())
                 main[m++] = left[l++];
             else
                 main[m++] = right[r++];
         }
+
 
         while (l < left.length) // сливаем остатки левого массива
             main[m++] = left[l++];
