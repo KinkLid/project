@@ -1,5 +1,7 @@
 package org.teamwork.validation;
 
+import org.teamwork.model.*;
+
 public class StudentValidator {
 
     public static void validate(Student student) {

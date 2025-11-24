@@ -1,5 +1,7 @@
 package org.teamwork.model;
 
+import org.teamwork.validation.*;
+
 public class Student {
 
     private final int groupNumber;
