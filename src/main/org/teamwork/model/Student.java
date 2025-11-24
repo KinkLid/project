@@ -1,3 +1,5 @@
+package org.teamwork.model;
+
 public class Student {
 
     private final int groupNumber;

@@ -1,3 +1,5 @@
+package org.teamwork.validation;
+
 public class StudentValidator {
 
     public static void validate(Student student) {

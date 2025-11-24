@@ -6,16 +6,16 @@
 ```
 src
 └── main
-	└── java
-		└── org
-			└── teamwork
-				├── app
-				├── io
-				├── model
-				├── sort
-				├── test
-				├── validation
-				└── Main.java
+	└──  
+		org
+		└── teamwork
+			├── app/
+			├── io/
+			├── model/
+			├── sort/
+			├── test/
+			├── validation/
+			└── Main.java
 ```
 
 ### Пакеты:
