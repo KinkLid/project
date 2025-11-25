@@ -1,6 +1,7 @@
-package main.io;
+package org.teamwork.io;
 
-import main.Student;
+
+import org.teamwork.model.Student;
 
 public class StudentRandomDataInput extends AbstractRandomDataInput <Student> {
 
@@ -15,10 +16,10 @@ public class StudentRandomDataInput extends AbstractRandomDataInput <Student> {
         sb.append(1 + random.nextInt(99));
         String recordBookNum = sb.toString(); // номер зачетки
 
-        return new Student().Builder()
-                .setGroupNumber(groupNum)
-                .setAverageGrade(avgGrade)
-                .setRecordBookNumber(recordBookNum)
+        return new Student.Builder()
+                .groupNumber(groupNum)
+                .averageGrade(avgGrade)
+                .recordBookNumber(recordBookNum)
                 .build();
     }
 }

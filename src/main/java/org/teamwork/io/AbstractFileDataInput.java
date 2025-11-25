@@ -1,4 +1,4 @@
-package main.io;
+package org.teamwork.io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

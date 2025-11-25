@@ -1,7 +1,9 @@
-package main.io;
+package org.teamwork.io;
 
-import main.Student;
-import main.validation.StudentValidator;
+
+import org.teamwork.model.Student;
+import org.teamwork.validation.InputValidator;
+import org.teamwork.validation.StudentValidator;
 
 public class StudentFileDataInput extends AbstractFileDataInput<Student> {
     // Парсинг строки, содержащей данные о студентах
@@ -17,14 +19,16 @@ public class StudentFileDataInput extends AbstractFileDataInput<Student> {
         double avgGrade = Double.parseDouble(parts[1].trim());
         String recordBookNum = parts[2].trim();
 
-        StudentValidator.validateGroupNumber(groupNum);
-        StudentValidator.validateAverageGrade(avgGrade);
-        StudentValidator.validateRecordBookNumber(recordBookNum);
+        InputValidator.validateGroupNumber(groupNum);
+        InputValidator.validateAverageGrade(avgGrade);
+        InputValidator.validateRecordBookNumber(recordBookNum);
 
-        return Student.Builder()
-                .setGroupNumber(groupNum)
-                .setAverageGrade(avgGrade)
-                .setRecordBookNumber(recordBookNum)
+        // В StudentValidator теперь только одна функция Validate,
+
+        return new Student.Builder()
+                .groupNumber(groupNum)
+                .averageGrade(avgGrade)
+                .recordBookNumber(recordBookNum)
                 .build();
     }
 }
