@@ -1,6 +1,8 @@
-package main.validation;
+package org.teamwork.validation;
 
-public class StudentValidator {
+import org.teamwork.model.Student;
+
+public class InputValidator {
 
     /**
      * Валидирует номер группы.

@@ -1,6 +1,6 @@
-package main.io;
+package org.teamwork.io;
 
-import main.Student;
+import org.teamwork.model.Student;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,5 +38,4 @@ public class StudentInputHandler extends AbstractInputHandler<Student> {
     public ArrayList<Student> getFileInput(String filePath) throws IOException {
         return fileInput(filePath);
     }
-}
 }
