@@ -11,6 +11,7 @@ public class SortTest {
         testGroupNumberSort();
         testRecordBookNumberSort();
         testAllSort();
+        testEvenNumbered();
     }
     static void testAverageGradeSort(){
         Student[] result = new Student[]{
@@ -24,7 +25,7 @@ public class SortTest {
                 new Student(105,55.44, "006600"),
         };
 
-        result = new StudentSort(result, new ByAverageGradeStrategy()).getStudents();
+        result = new StudentSort(result, new ByAllStrategy()).getStudents();
 
         check(result,new Student[]{
                 new Student(105,31.35, "006600"),
@@ -50,7 +51,7 @@ public class SortTest {
                 new Student(111,66.00, "006600")
         };
 
-        result = new StudentSort(result, new ByGroupNumberStrategy()).getStudents();
+        result = new StudentSort(result, new ByAllStrategy()).getStudents();
 
         check(result,new Student[]{
                 new Student(111,66.00, "006600"),
@@ -75,7 +76,7 @@ public class SortTest {
                 new Student(105,99.00, "2040111Б"),
         };
 
-        result = new StudentSort(result, new ByRecordBookNumberStrategy()).getStudents();
+        result = new StudentSort(result, new ByAllStrategy()).getStudents();
 
         check(result,new Student[]{
                 new Student(105,99.00, "1940321"),
@@ -102,10 +103,7 @@ public class SortTest {
                 new Student(123,33.33, "0066А00")
         };
 
-        StudentSort studentSort = new StudentSort(result, new ByGroupNumberStrategy());
-        studentSort.setStrategy(new ByAverageGradeStrategy());
-        studentSort.setStrategy(new ByRecordBookNumberStrategy());
-        result = studentSort.getStudents();
+        result = new StudentSort(result, new ByAllStrategy()).getStudents();
 
         check(result,new Student[]{
                 new Student(123,33.33, "0066А00"),
@@ -119,6 +117,35 @@ public class SortTest {
                 new Student(345,99.99, "2040479")
         },"testAllSort");
     }
+
+    static void testEvenNumbered(){
+        Student[] result = new Student[]{
+                new Student(111,4.66, "222222Б"),
+                new Student(555,3.99, "2040479"),
+                new Student(333,2.86, "333333В"),
+                new Student(666,4.74, "2040122"),
+                new Student(888,4.55, "2222222"),
+                new Student(888,4.55, "1111111"),
+                new Student(444,4.75, "2040644"),
+                new Student(666,3.66, "111111А"),
+                new Student(777,2.33, "0066А00")
+        };
+
+        result = new StudentSort(result, new ByEvenNumberedStrategy()).getStudents();
+
+        check(result,new Student[]{
+                new Student(111,4.66,"222222Б"),
+                new Student(555,3.99,"2040479"),
+                new Student(333,2.86,"333333В"),
+                new Student(444,4.75,"2040644"),
+                new Student(666,3.66,"111111А"),
+                new Student(666,4.74,"2040122"),
+                new Student(888,4.55,"1111111"),
+                new Student(888,4.55,"2222222"),
+                new Student(777,2.33,"0066А00")
+        },"testEvenNumbered");
+    }
+
 
 
     static void check(Student[] result, Student[] expected, String testName){
