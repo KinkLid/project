@@ -22,7 +22,6 @@ public class StudentManualDataInput extends AbstractManualDataInput <Student> {
 
         IO.println("Введите номер зачетной книжки (String): ");
         String recordBookNum = scanner.nextLine();
-        scanner.nextLine(); // Очистка буфера
         InputValidator.validateRecordBookNumber(recordBookNum);
 
         return new Student.Builder()
