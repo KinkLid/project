@@ -67,7 +67,11 @@ public class MultiThreadCounterWindow extends BasicWindow {
 				}
 
 				// Создаем объект-образец для поиска
-				Student target = new Student(group, grade, recordBook);
+				Student target = new Student.Builder()
+						.groupNumber(group)
+						.averageGrade(grade)
+						.recordBookNumber(recordBook)
+						.build();
 
 				// Вызов логики
 				long startTime = System.currentTimeMillis();

@@ -27,7 +27,14 @@ public class StudentReader {
 						double grade = Double.parseDouble(parts[1].trim());
 						String recordBook = parts[2].trim();
 
-						students.add(new Student(group, grade, recordBook));
+						Student student = new Student.Builder()
+								.groupNumber(group)
+								.averageGrade(grade)
+								.recordBookNumber(recordBook)
+								.build();
+
+						students.add(student);
+
 					} catch (NumberFormatException e) {
 						System.err.println("Ошибка парсинга строки: " + line);
 					}

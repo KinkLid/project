@@ -28,8 +28,8 @@ public class SortSelectionWindow extends BasicWindow {
 
 		ActionListBox actionListBox = new ActionListBox(new TerminalSize(60, 10));
 
-		actionListBox.addItem("1. Обычный способ сортировки", this::commonSort);
-//		actionListBox.addItem("2. Дополнительный способ сортировки" () -> performSort(new ByAverageGradeStrategy()));
+		actionListBox.addItem("1. Обычный способ сортировки", () -> performSort(new ByAllStrategy()));
+		actionListBox.addItem("2. Сортировка только чётных групп", () -> performSort(new ByEvenNumberedStrategy()));
 		actionListBox.addItem("3. Поиск", this::multiThread);
 		actionListBox.addItem("Назад в главное меню", this::close);
 
@@ -37,29 +37,29 @@ public class SortSelectionWindow extends BasicWindow {
 		setComponent(panel);
 	}
 
-	private void commonSort() {
+	private void performSort(StudentSortStrategy strategy) {
 		try {
 			Student[] studentArray = students.toArray(new Student[0]);
-            StudentSort studentSort = new StudentSort(studentArray, new ByGroupNumberStrategy());
-            studentSort.setStrategy(new ByAverageGradeStrategy());
-            studentSort.setStrategy(new ByRecordBookNumberStrategy());
+			StudentSort studentSort = new StudentSort(studentArray, strategy);
+
 			Student[] sortedArray = studentSort.getStudents();
 
 			List<Student> sortedList = Arrays.asList(sortedArray);
 			onSortComplete.accept(sortedList);
 			this.close();
+
 		} catch (Exception e) {
 			MessageDialog.showMessageDialog(this.getTextGUI(), "Ошибка",
 					"Ошибка при сортировке: " + e.getMessage(), MessageDialogButton.OK);
 		}
 	}
 
-    private void multiThread() {
-        if (students == null || students.isEmpty()) {
-            MessageDialog.showMessageDialog(this.getTextGUI(), "Внимание",
-                    "Список студентов пуст.", MessageDialogButton.OK);
-            return;
-        }
-        getTextGUI().addWindowAndWait(new MultiThreadCounterWindow(this.students));
-    }
+	private void multiThread() {
+		if (students == null || students.isEmpty()) {
+			MessageDialog.showMessageDialog(this.getTextGUI(), "Внимание",
+					"Список студентов пуст.", MessageDialogButton.OK);
+			return;
+		}
+		getTextGUI().addWindowAndWait(new MultiThreadCounterWindow(this.students));
+	}
 }
