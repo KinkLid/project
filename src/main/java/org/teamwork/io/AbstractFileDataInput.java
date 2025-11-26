@@ -29,10 +29,6 @@ public abstract class AbstractFileDataInput <T> {
                     T item = parseLine(parts);  // Преобразуем строку в объект
                     items.add(item);
                 }
-                catch (NumberFormatException e)
-                {
-                    throw new NumberFormatException("Ошибка обработки строки: " + line + ". Причина: " + e.getMessage());
-                }
                 catch (IllegalArgumentException e) {
                     throw new IllegalArgumentException("Ошибка обработки строки: " + line + ". Причина: " + e.getMessage());
                 }
