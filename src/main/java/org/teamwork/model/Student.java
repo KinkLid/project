@@ -77,7 +77,7 @@ public class Student {
 
         public Student build() {
             Student student = new Student(this);
-            StudentValidator.validate(student);
+            InputValidator.validateStudent(student);
             return student;
         }
     }
