@@ -79,13 +79,14 @@ public class ManualInputWindow extends BasicWindow {
 			String recordBookNumber = recordBookText.trim();
 
 			// Валидация данных
-			org.teamwork.validation.StudentValidator.validateStudent(groupNumber, averageGrade, recordBookNumber);
+			org.teamwork.validation.InputValidator.validateStudent(groupNumber, averageGrade, recordBookNumber);
 
-			Student student = Student.Builder()
-					.setGroupNumber(groupNumber)
-					.setAverageGrade(averageGrade)
-					.setRecordBookNumber(recordBookNumber)
+			Student student = new Student.Builder()
+					.groupNumber(groupNumber)
+					.averageGrade(averageGrade)
+					.recordBookNumber(recordBookNumber)
 					.build();
+
 			students.add(student);
 			currentIndex++;
 
@@ -99,6 +100,8 @@ public class ManualInputWindow extends BasicWindow {
 				averageGradeBox.setText("");
 				recordBookNumberBox.setText("");
 				statusLabel.setText(String.format("Введите данные студента %d из %d:", currentIndex + 1, length));
+
+				groupNumberBox.takeFocus();
 			}
 		} catch (NumberFormatException e) {
 			MessageDialog.showMessageDialog(this.getTextGUI(), "Ошибка",
