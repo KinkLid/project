@@ -1,4 +1,4 @@
-package org.teamwork.test;
+package org.teamwork;
 
 import org.teamwork.model.Student;
 import org.teamwork.sort.*;
@@ -6,7 +6,7 @@ import org.teamwork.sort.*;
 import java.util.Arrays;
 
 public class SortTest {
-    public static void main(String[] args) {
+    void main() {
         testAverageGradeSort();
         testGroupNumberSort();
         testRecordBookNumberSort();

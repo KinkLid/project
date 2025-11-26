@@ -8,7 +8,7 @@ public class Student {
     private final double averageGrade;
     private final String recordBookNumber;
 
-    private Student(Builder builder) {
+    public Student(Builder builder) {
         this.groupNumber = builder.groupNumber;
         this.averageGrade = builder.averageGrade;
         this.recordBookNumber = builder.recordBookNumber;
