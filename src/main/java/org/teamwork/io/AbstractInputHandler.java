@@ -89,7 +89,6 @@ public abstract class AbstractInputHandler <T>{
 
     // Обработка ввода случайных данных
     private ArrayList<T> handleRandomInputArray(Scanner scanner) throws IOException {
-        System.out.print("Введите количество элементов: ");
         int length;
         try {
             System.out.print("Введите количество элементов: ");
@@ -99,7 +98,6 @@ public abstract class AbstractInputHandler <T>{
         {
             throw new IllegalArgumentException(e.getMessage());
         }
-        scanner.nextLine();
 
         if (length < 0) {
             throw new IllegalArgumentException("Количество элементов не может быть отрицательным: " + length);
