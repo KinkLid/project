@@ -2,12 +2,21 @@ package org.teamwork.io;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Абстрактный класс для взаимодействия с пользователем, определения способа ввода и длины массива элементов.
 public abstract class AbstractInputHandler <T>{
 
-    protected final String OUTPUT_INPUT_PATH = "src/test/resources/"; // путь для работы с файлами
+    protected ArrayList<T> inputArray; // неотсортированная коллекция элементов, введенных пользователем
+
+    protected final String OUTPUT_INPUT_PATH = "src/main/resources/"; // путь для работы с файлами
+
+
+    public ArrayList<T> getInputArray()
+    {
+        return inputArray;
+    }
 
     //Метод, обрабатывающий выбор пользователя для ввода данных (из файла, случайных данных или вручную)
     public void handleInput(Scanner scanner) {
@@ -25,15 +34,15 @@ public abstract class AbstractInputHandler <T>{
                 switch (choice) {
                     case 1 -> {
                         isInputIncorrect = false;
-                        HandleTextInputArray(scanner);
+                        inputArray = handleTextInputArray(scanner);
                     }
                     case 2 -> {
                         isInputIncorrect = false;
-                        HandleRandomInputArray(scanner);
+                        inputArray = handleRandomInputArray(scanner);
                     }
                     case 3 -> {
                         isInputIncorrect = false;
-                        handleManualInputArray(scanner);
+                        inputArray = handleManualInputArray(scanner);
                     }
                     case 0 -> {
                         return;
@@ -51,42 +60,56 @@ public abstract class AbstractInputHandler <T>{
     }
 
     // Обработка ввода данных вручную, создание списка и его печать.
-    private void handleManualInputArray (Scanner scanner) {
-        System.out.print("Введите количество элементов: ");
-        int length = scanner.nextInt();
-        scanner.nextLine(); // Очистка буфера
+    private ArrayList<T> handleManualInputArray (Scanner scanner) {
+        int length;
+        try {
+            System.out.print("Введите количество элементов: ");
+            length = scanner.nextInt();
+            scanner.nextLine(); // Очистка буфера
+        } catch (InputMismatchException e)
+        {
+            throw new IllegalArgumentException(e.getMessage());
+        }
 
         if (length < 0) {
             throw new IllegalArgumentException("Количество элементов не может быть отрицательным: " + length);
         }
 
-        ArrayList<T> items = manualInput(length);
+        return manualInput(length, scanner);
     }
 
     // Обработка ввода данных из файла
-    private void HandleTextInputArray(Scanner scanner) throws IOException {
+    private ArrayList<T> handleTextInputArray(Scanner scanner) throws IOException {
         System.out.print("Введите название файла: ");
         String filePath = OUTPUT_INPUT_PATH + scanner.next() + ".txt";
         scanner.nextLine();
 
-        ArrayList<T> items = fileInput(filePath);
+        return fileInput(filePath);
     }
 
     // Обработка ввода случайных данных
-    private void HandleRandomInputArray(Scanner scanner) throws IOException {
+    private ArrayList<T> handleRandomInputArray(Scanner scanner) throws IOException {
         System.out.print("Введите количество элементов: ");
-        int length = scanner.nextInt();
+        int length;
+        try {
+            System.out.print("Введите количество элементов: ");
+            length = scanner.nextInt();
+            scanner.nextLine(); // Очистка буфера
+        } catch (InputMismatchException e)
+        {
+            throw new IllegalArgumentException(e.getMessage());
+        }
         scanner.nextLine();
 
         if (length < 0) {
             throw new IllegalArgumentException("Количество элементов не может быть отрицательным: " + length);
         }
 
-        ArrayList<T> items = randomInput(length);
+        return randomInput(length);
     }
 
     // Три метода для ввода данных, по одному для каждого способа ввода.
-    protected abstract ArrayList<T> manualInput(int length);
+    protected abstract ArrayList<T> manualInput(int length, Scanner scanner);
     protected abstract ArrayList<T> randomInput(int length);
     protected abstract ArrayList<T> fileInput(String filePath) throws IOException;
 

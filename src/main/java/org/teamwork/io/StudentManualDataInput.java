@@ -4,10 +4,12 @@ import org.teamwork.model.Student;
 import org.teamwork.validation.InputValidator;
 import org.teamwork.validation.StudentValidator;
 
+import java.util.Scanner;
+
 public class StudentManualDataInput extends AbstractManualDataInput <Student> {
 
     @Override
-    protected Student createObject() {
+    protected Student createObject(Scanner scanner) {
         IO.println("Введите номер группы (int): ");
         int groupNum = scanner.nextInt();
         scanner.nextLine(); // Очистка буфера

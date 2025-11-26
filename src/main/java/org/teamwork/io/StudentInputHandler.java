@@ -4,14 +4,15 @@ import org.teamwork.model.Student;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 // Класс для обработки ввода данных о студентах
 public class StudentInputHandler extends AbstractInputHandler<Student> {
 
     @Override
-    protected ArrayList<Student> manualInput(int length) {
+    protected ArrayList<Student> manualInput(int length, Scanner scanner) {
         AbstractManualDataInput<Student> studentInput = new StudentManualDataInput();
-        return studentInput.manualDataInputArray(length);
+        return studentInput.manualDataInputArray(length, scanner);
     }
 
     @Override
@@ -27,8 +28,8 @@ public class StudentInputHandler extends AbstractInputHandler<Student> {
     }
 
     // Публичные методы для использования в TUI
-    public ArrayList<Student> getManualInput(int length) {
-        return manualInput(length);
+    public ArrayList<Student> getManualInput(int length, Scanner scanner) {
+        return manualInput(length, scanner);
     }
 
     public ArrayList<Student> getRandomInput(int length) {

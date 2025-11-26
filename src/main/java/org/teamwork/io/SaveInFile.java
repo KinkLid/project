@@ -14,7 +14,7 @@ public class SaveInFile {
 //
 //    Нужно добавить в пакет io класс, который записывает список студентов в файл через FileWriter(path, true)
 
-    protected static final String OUTPUT_PATH = "src/test/resources/saveInFile/";
+    protected static final String OUTPUT_PATH = "src/main/resources/saveInFile/";
 
     // метод для записи в файл. fileName имя самого файла, без пути, ArrayList - отсортированная коллекция элементов
     public static void save(String fileName, ArrayList<Student> students) throws IOException
