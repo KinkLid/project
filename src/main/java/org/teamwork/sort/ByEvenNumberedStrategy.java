@@ -1,43 +1,37 @@
 package org.teamwork.sort;
 
 import org.teamwork.model.Student;
+import java.util.Arrays;
 
-public class ByEvenNumberedStrategy extends AbstractMergeSort{
+public class ByEvenNumberedStrategy extends AbstractMergeSort {
+
     @Override
     public Student[] sort(Student[] students) {
         if (students == null) return null;
 
-        int count = 0;
-        for (Student student : students) {
-            if (student.getGroupNumber() % 2 != 1) {
-                count++;
-            }
-        }
+        boolean exist = Arrays.stream(students)
+                .map(Student::getGroupNumber)
+                .anyMatch(s -> (s % 2) != 1);
 
-        if (count != 0) {
-            Student[] evenNumbers = new Student[count];
-            count = 0;
-            for (Student student : students) {
-                if (student.getGroupNumber() % 2 != 1) {
-                    evenNumbers[count] = student;
-                    count++;
-                }
-            }
+        if (exist) {
+            Student[] evenNumbers = Arrays.stream(students)
+                    .filter(s -> (s.getGroupNumber() % 2) != 1)
+                    .toArray(Student[]::new);
 
             evenNumbers = super.splitting(evenNumbers);
 
-            count = 0;
+            int count = 0;
 
             for(int i = 0; i < students.length; i++){
                 if (students[i].getGroupNumber() % 2 != 1){
-                    students[i] = evenNumbers[count];
-                    count++;
-                    if(count == evenNumbers.length) break;
+                    students[i] = evenNumbers[count++];
+                    if(count == evenNumbers.length) {
+                        break;
+                    }
                 }
             }
             return students;
         }
         return students;
     }
-
 }
