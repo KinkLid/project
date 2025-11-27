@@ -1,12 +1,10 @@
 package org.teamwork.io;
 
-
-
-import org.teamwork.model.Student;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import org.teamwork.model.Student;
 
 public class SaveInFile {
 
@@ -22,8 +20,8 @@ public class SaveInFile {
         String filePath = OUTPUT_PATH + fileName;
         FileWriter writer = new FileWriter(filePath);
         for (Student student : students) {
-            writer.write(Integer.toString(student.getGroupNumber()) + ", ");
-            writer.write(Double.toString(student.getAverageGrade()) + ", ");
+            writer.write(String.format("%d", student.getGroupNumber()) + ", ");
+            writer.write(String.format("%.2f", student.getAverageGrade()) + ", ");
             writer.write(student.getRecordBookNumber() + "\n");
         }
         writer.close();
