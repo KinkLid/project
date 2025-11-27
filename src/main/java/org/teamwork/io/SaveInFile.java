@@ -20,7 +20,7 @@ public class SaveInFile {
     public static void save(String fileName, ArrayList<Student> students) throws IOException
     {
         String filePath = OUTPUT_PATH + fileName;
-        FileWriter writer = new FileWriter(filePath, true);
+        FileWriter writer = new FileWriter(filePath);
         for (Student student : students) {
             writer.write(Integer.toString(student.getGroupNumber()) + ", ");
             writer.write(Double.toString(student.getAverageGrade()) + ", ");
